@@ -194,7 +194,7 @@ usage()
     echo ""
     echo "Common Options:"
     echo ""
-    echo "BuildArch can be: -arm, -armel, -arm64, x64, x86, -wasm"
+    echo "BuildArch can be: -arm, -armel, -arm64, x64, x86, -ppc64, -wasm"
     echo "BuildType can be: -debug, -checked, -release"
     echo "-os: target OS (defaults to running OS)"
     echo "-bindir: output directory (defaults to $__ProjectRoot/artifacts)"
@@ -348,6 +348,10 @@ while :; do
 
         portablebuild=false|-portablebuild=false)
             __PortableBuild=0
+            ;;
+
+        ppc64|-ppc64)
+            __BuildArch=ppc64
             ;;
 
         release|-release)

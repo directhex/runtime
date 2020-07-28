@@ -583,9 +583,10 @@
     </PropertyGroup>
 
     <!-- ARM Linux cross build options -->
-    <PropertyGroup Condition="'$(TargetsAndroid)' != 'true' and '$(MonoCrossDir)' != '' and ('$(TargetArchitecture)' == 'arm' Or '$(TargetArchitecture)' == 'arm64')">
+    <PropertyGroup Condition="'$(TargetsAndroid)' != 'true' and '$(MonoCrossDir)' != '' and ('$(TargetArchitecture)' == 'arm' Or '$(TargetArchitecture)' == 'arm64' Or '$(TargetArchitecture)' == 'ppc64')">
       <_MonoTuple Condition="'$(TargetArchitecture)' == 'arm64'">aarch64-linux-gnu</_MonoTuple>
       <_MonoTuple Condition="'$(TargetArchitecture)' == 'arm'">arm-linux-gnueabihf</_MonoTuple>
+      <_MonoTuple Condition="'$(TargetArchitecture)' == 'ppc64'">powerpc64-linux-gnu</_MonoTuple>
 
       <_MonoRANLIBOption>RANLIB="$(_MonoTuple)-ranlib"</_MonoRANLIBOption>
       <_MonoAROption>AR="$(_MonoTuple)-ar"</_MonoAROption>
@@ -693,7 +694,7 @@
       <_MonoCXXFLAGS Include="-Wl,--build-id=sha1" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(MonoCrossDir)' != '' and ('$(TargetArchitecture)' == 'arm' Or '$(TargetArchitecture)' == 'arm64')">
+    <ItemGroup Condition="'$(MonoCrossDir)' != '' and ('$(TargetArchitecture)' == 'arm' Or '$(TargetArchitecture)' == 'arm64' Or '$(TargetArchitecture)' == 'ppc64')">
       <_MonoConfigureParams Include="--host=$(_MonoTuple)" />
       <_MonoConfigureParams Include="--target=$(_MonoTuple)" />
 

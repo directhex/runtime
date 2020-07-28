@@ -4,6 +4,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
     <TargetFrameworks>$(NetCoreAppCurrent)-Windows_NT;$(NetCoreAppCurrent)-Unix;$(NetCoreAppCurrent)-Browser</TargetFrameworks>
+    <RunMatchingRefApiCompat>false</RunMatchingRefApiCompat>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="System\Runtime\InteropServices\RuntimeInformation\RuntimeInformation.cs" />

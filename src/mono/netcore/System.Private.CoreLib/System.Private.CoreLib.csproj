@@ -77,6 +77,10 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants>TARGET_64BIT;TARGET_ARM64;$(DefineConstants)</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)' == 'ppc64'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DefineConstants>TARGET_64BIT;TARGET_POWERPC64;TARGET_PPC64;$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Platform)' == 'wasm'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants>TARGET_32BIT;$(DefineConstants)</DefineConstants>

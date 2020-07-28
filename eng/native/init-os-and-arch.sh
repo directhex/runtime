@@ -56,6 +56,10 @@ case "$CPUName" in
         arch=x86
         ;;
 
+    ppc64|powerpc64)
+        arch=ppc64
+        ;;
+
     *)
         echo "Unknown CPU $CPUName detected, configuring as if for x64"
         arch=x64
