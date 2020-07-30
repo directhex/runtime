@@ -41,7 +41,8 @@ int32_t SystemNative_GetUnixVersion(char* version, int* capacity)
  0 - x86
  1 - x64
  2 - ARM
- 3 - ARM64 */
+ 3 - ARM64
+ 4 - s390x */
 int32_t SystemNative_GetOSArchitecture()
 {
 #if defined(TARGET_ARM)
@@ -50,6 +51,8 @@ int32_t SystemNative_GetOSArchitecture()
     return ARCH_ARM64;
 #elif defined(TARGET_AMD64)
     return ARCH_X64;
+#elif defined(TARGET_S390X)
+    return ARCH_S390X;
 #elif defined(TARGET_X86) || defined(TARGET_WASM) // TODO: add arch for WASM
     return ARCH_X86;
 #else
@@ -61,7 +64,8 @@ int32_t SystemNative_GetOSArchitecture()
 0 - x86
 1 - x64
 2 - ARM
-3 - ARM64 */
+3 - ARM64
+4 - s390x */
 int32_t SystemNative_GetProcessArchitecture()
 {
 #if defined(TARGET_ARM)
@@ -70,6 +74,8 @@ int32_t SystemNative_GetProcessArchitecture()
     return ARCH_ARM64;
 #elif defined(TARGET_AMD64)
     return ARCH_X64;
+#elif defined(TARGET_S390X)
+    return ARCH_S390X;
 #elif defined(TARGET_X86) || defined(TARGET_WASM) // TODO: add arch for WASM
     return ARCH_X86;
 #else

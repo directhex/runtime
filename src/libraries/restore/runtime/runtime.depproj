@@ -39,7 +39,9 @@
 
     <ItemGroup>
       <HostFxFile Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Filename)' == '$(HostFxrFileName)'" />
+      <HostFxFile Include="$(CoreHostArtifactsPath)\$(HostFxrFileName)$(LibSuffix)" Condition="$(HostFxFile) == ''" />
       <DotnetExe Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Filename)' == 'dotnet'" />
+      <DotnetExe Include="$(CoreHostArtifactsPath)\dotnet" Condition="$(DotnetExe) == ''" />
     </ItemGroup>
 
     <Copy SourceFiles="@(HostFxFile)"

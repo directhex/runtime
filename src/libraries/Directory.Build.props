@@ -328,4 +328,14 @@
     <CLSCompliant Condition="'$(CLSCompliant)' == '' and ('$(IsTestProject)' == 'true' or '$(IsTestSupportProject)' == 'true')">false</CLSCompliant>
     <CLSCompliant Condition="'$(CLSCompliant)' == ''">true</CLSCompliant>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <LibPrefix Condition="'$(TargetOS)' != 'Windows_NT'">lib</LibPrefix>
+    <LibSuffix>.so</LibSuffix>
+    <LibSuffix Condition="'$(TargetOS)' == 'Windows_NT'">.dll</LibSuffix>
+    <LibSuffix Condition="'$(TargetOS)' == 'OSX' or '$(TargetOS)' == 'iOS' or '$(TargetOS)' == 'tvOS'">.dylib</LibSuffix>
+    <StaticLibPrefix>lib</StaticLibPrefix>
+    <StaticLibSuffix>.a</StaticLibSuffix>
+    <StaticLibSuffix Condition="'$(TargetOS)' == 'Windows_NT'">.lib</StaticLibSuffix>
+  </PropertyGroup>
 </Project>

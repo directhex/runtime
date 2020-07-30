@@ -3,6 +3,7 @@
   <PropertyGroup>
     <CoreCLRArtifactsPath Condition="'$(CoreCLROverridePath)' != ''">$([MSBuild]::NormalizeDirectory('$(CoreCLROverridePath)'))</CoreCLRArtifactsPath>
     <MonoArtifactsPath Condition="'$(MonoOverridePath)' != ''">$([MSBuild]::NormalizeDirectory('$(MonoOverridePath)'))</MonoArtifactsPath>
+    <CoreHostArtifactsPath Condition="'$(CoreHostOverridePath)' != ''">$([MSBuild]::NormalizeDirectory('$(CoreHostOverridePath)'))</CoreHostArtifactsPath>
     <LibrariesArtifactsPath Condition="'$(LibrariesOverridePath)' != ''">$([MSBuild]::NormalizeDirectory('$(LibrariesOverridePath)'))</LibrariesArtifactsPath>
     <LibrariesAllConfigurationsArtifactsPath Condition="'$(LibrariesAllConfigurationsOverridePath)' != ''">$([MSBuild]::NormalizeDirectory('$(LibrariesAllConfigurationsOverridePath)'))</LibrariesAllConfigurationsArtifactsPath>
 
@@ -51,6 +52,7 @@
   <PropertyGroup>
     <CoreCLRArtifactsPath Condition="'$(CoreCLRArtifactsPath)' == ''">$([MSBuild]::NormalizeDirectory('$(RepoRoot)', 'artifacts', 'bin', 'coreclr', '$(CoreCLRTargetOS).$(TargetArchitecture).$(CoreCLRConfiguration)'))</CoreCLRArtifactsPath>
     <MonoArtifactsPath Condition="'$(MonoArtifactsPath)' == ''">$([MSBuild]::NormalizeDirectory('$(RepoRoot)', 'artifacts', 'bin', 'mono', '$(MonoTargetOS).$(TargetArchitecture).$(MonoConfiguration)'))</MonoArtifactsPath>
+    <CoreHostArtifactsPath Condition="'$(CoreHostArtifactsPath)' == ''">$([MSBuild]::NormalizeDirectory('$(RepoRoot)', 'artifacts', 'bin', '$(MonoTargetOS.ToLower())-$(TargetArchitecture).$(MonoConfiguration)', 'corehost'))</CoreHostArtifactsPath>
     <LibrariesArtifactsPath Condition="'$(LibrariesArtifactsPath)' == ''">$([MSBuild]::NormalizeDirectory('$(RepoRoot)', 'artifacts'))</LibrariesArtifactsPath>
     <LibrariesAllConfigurationsArtifactsPath Condition="'$(LibrariesAllConfigurationsArtifactsPath)' == ''">$([MSBuild]::NormalizeDirectory('$(RepoRoot)', 'artifacts'))</LibrariesAllConfigurationsArtifactsPath>
   </PropertyGroup>
@@ -96,6 +98,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(RuntimeFlavor)' == 'Mono'">
       <MonoArtifactsPath>$([MSBuild]::NormalizeDirectory('$(MonoArtifactsPath)'))</MonoArtifactsPath>
+      <CoreHostArtifactsPath>$([MSBuild]::NormalizeDirectory('$(CoreHostArtifactsPath)'))</CoreHostArtifactsPath>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(RuntimeFlavor)' == 'CoreCLR'">
