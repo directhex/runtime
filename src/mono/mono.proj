@@ -584,6 +584,8 @@
     <!-- macOS host specific options -->
     <ItemGroup Condition="'$(RealTargetOS)' == 'OSX' or $([MSBuild]::IsOSPlatform('OSX'))">
       <MonoAOTCMakeArgs Include="-DCMAKE_OSX_DEPLOYMENT_TARGET=$(macOSVersionMin)" />
+      <MonoAOTCMakeArgs Condition="'$(RealTargetArchitecture)' == 'arm64'" Include="-DCMAKE_OSX_ARCHITECTURES=arm64" />
+      <_MonoAOTCPPFLAGS Condition="'$(RealTargetArchitecture)' == 'arm64'" Include="-arch arm64" />
     </ItemGroup>
 
     <!-- WASM specific options -->
