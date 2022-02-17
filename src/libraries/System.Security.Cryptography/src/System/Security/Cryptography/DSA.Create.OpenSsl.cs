@@ -7,7 +7,9 @@ namespace System.Security.Cryptography
     {
         private static DSA CreateCore()
         {
+#pragma warning disable CA1416
             return new DSAWrapper(new DSAOpenSsl());
+#pragma warning restore CA1416
         }
     }
 }

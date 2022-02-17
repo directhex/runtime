@@ -72,7 +72,7 @@ fi
 
 if [[ "$__TargetOS" == Android && -z "$ROOTFS_DIR" ]]; then
     # Android SDK defaults to c++_static; we only need C support
-    __CMakeArgs="-DANDROID_STL=none $__CMakeArgs"
+    __CMakeArgs="-DFORCE_ANDROID_OPENSSL=1 -DANDROID_STL=none $__CMakeArgs"
 elif [[ "$__TargetOS" == iOSSimulator ]]; then
     # set default iOS simulator deployment target
     # keep in sync with src/mono/Directory.Build.props

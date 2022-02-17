@@ -4,6 +4,9 @@ macro(append_extra_cryptography_libs NativeLibsExtra)
        set(CMAKE_FIND_LIBRARY_SUFFIXES .a)
     endif(CMAKE_STATIC_LIB_LINK)
 
+    set(OPENSSL_CRYPTO_LIBRARY /home/directhex/Projects/prefab/modules/crypto/libs/android.x86_64/libcrypto.so)
+    set(OPENSSL_SSL_LIBRARY /home/directhex/Projects/prefab/modules/ssl/libs/android.x86_64/libssl.so)
+    set(OPENSSL_INCLUDE_DIR /home/directhex/Projects/prefab/modules/ssl/include/)
     find_package(OpenSSL)
 
     if(NOT OPENSSL_FOUND)

@@ -9,7 +9,9 @@ namespace System.Security.Cryptography
 {
     public sealed class SafeEvpPKeyHandle : SafeHandle
     {
+#pragma warning disable CA1416
         internal static readonly SafeEvpPKeyHandle InvalidHandle = new SafeEvpPKeyHandle();
+#pragma warning restore CA1416
 
         [UnsupportedOSPlatform("android")]
         [UnsupportedOSPlatform("browser")]
@@ -55,7 +57,9 @@ namespace System.Security.Cryptography
 
             // Reliability: Allocate the SafeHandle before calling UpRefEvpPkey so
             // that we don't lose a tracked reference in low-memory situations.
+#pragma warning disable CA1416
             SafeEvpPKeyHandle safeHandle = new SafeEvpPKeyHandle();
+#pragma warning restore CA1416
 
             int success = Interop.Crypto.UpRefEvpPkey(this);
 

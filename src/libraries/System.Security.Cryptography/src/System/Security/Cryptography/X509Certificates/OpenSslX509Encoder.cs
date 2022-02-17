@@ -263,7 +263,9 @@ namespace System.Security.Cryptography.X509Certificates
 
         private static RSA BuildRsaPublicKey(byte[] encodedData)
         {
+#pragma warning disable CA1416
             RSA rsa = new RSAOpenSsl();
+#pragma warning restore CA1416
             try
             {
                 rsa.ImportRSAPublicKey(new ReadOnlySpan<byte>(encodedData), out _);
@@ -287,7 +289,9 @@ namespace System.Security.Cryptography.X509Certificates
             AsnWriter writer = new AsnWriter(AsnEncodingRules.DER);
             spki.Encode(writer);
 
+#pragma warning disable CA1416
             DSA dsa = new DSAOpenSsl();
+#pragma warning restore CA1416
             try
             {
                 dsa.ImportSubjectPublicKeyInfo(writer.Encode(), out _);

@@ -552,8 +552,9 @@ namespace System.Security.Cryptography.X509Certificates
             {
                 return null;
             }
-
+#pragma warning disable CA1416
             return new RSAOpenSsl(_privateKey);
+#pragma warning restore CA1416
         }
 
         public DSA? GetDSAPrivateKey()
@@ -562,8 +563,9 @@ namespace System.Security.Cryptography.X509Certificates
             {
                 return null;
             }
-
+#pragma warning disable CA1416
             return new DSAOpenSsl(_privateKey);
+#pragma warning restore CA1416
         }
 
         public ECDsa GetECDsaPublicKey()
@@ -572,7 +574,9 @@ namespace System.Security.Cryptography.X509Certificates
             {
                 Interop.Crypto.CheckValidOpenSslHandle(publicKeyHandle);
 
+#pragma warning disable CA1416
                 return new ECDsaOpenSsl(publicKeyHandle);
+#pragma warning restore CA1416
             }
         }
 
@@ -582,7 +586,9 @@ namespace System.Security.Cryptography.X509Certificates
             {
                 Interop.Crypto.CheckValidOpenSslHandle(publicKeyHandle);
 
+#pragma warning disable CA1416
                 return new ECDiffieHellmanOpenSsl(publicKeyHandle);
+#pragma warning restore CA1416
             }
         }
 
@@ -593,7 +599,9 @@ namespace System.Security.Cryptography.X509Certificates
                 return null;
             }
 
+#pragma warning disable CA1416
             return new ECDsaOpenSsl(_privateKey);
+#pragma warning restore CA1416
         }
 
         public ECDiffieHellman? GetECDiffieHellmanPrivateKey()
@@ -602,8 +610,9 @@ namespace System.Security.Cryptography.X509Certificates
             {
                 return null;
             }
-
+#pragma warning disable CA1416
             return new ECDiffieHellmanOpenSsl(_privateKey);
+#pragma warning restore CA1416
         }
 
         private ICertificatePal CopyWithPrivateKey(SafeEvpPKeyHandle privateKey)
@@ -629,7 +638,9 @@ namespace System.Security.Cryptography.X509Certificates
             DSAParameters dsaParameters = privateKey.ExportParameters(true);
 
             using (PinAndClear.Track(dsaParameters.X!))
+#pragma warning disable CA1416
             using (typedKey = new DSAOpenSsl(dsaParameters))
+#pragma warning restore CA1416
             {
                 return CopyWithPrivateKey(typedKey.DuplicateKeyHandle());
             }
@@ -647,7 +658,9 @@ namespace System.Security.Cryptography.X509Certificates
             ECParameters ecParameters = privateKey.ExportParameters(true);
 
             using (PinAndClear.Track(ecParameters.D!))
+#pragma warning disable CA1416
             using (typedKey = new ECDsaOpenSsl())
+#pragma warning restore CA1416
             {
                 typedKey.ImportParameters(ecParameters);
 
@@ -667,7 +680,9 @@ namespace System.Security.Cryptography.X509Certificates
             ECParameters ecParameters = privateKey.ExportParameters(true);
 
             using (PinAndClear.Track(ecParameters.D!))
+#pragma warning disable CA1416
             using (typedKey = new ECDiffieHellmanOpenSsl())
+#pragma warning restore CA1416
             {
                 typedKey.ImportParameters(ecParameters);
 
@@ -692,7 +707,9 @@ namespace System.Security.Cryptography.X509Certificates
             using (PinAndClear.Track(rsaParameters.DP!))
             using (PinAndClear.Track(rsaParameters.DQ!))
             using (PinAndClear.Track(rsaParameters.InverseQ!))
+#pragma warning disable CA1416
             using (typedKey = new RSAOpenSsl(rsaParameters))
+#pragma warning restore CA1416
             {
                 return CopyWithPrivateKey(typedKey.DuplicateKeyHandle());
             }

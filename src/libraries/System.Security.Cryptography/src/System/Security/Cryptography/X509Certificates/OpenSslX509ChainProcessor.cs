@@ -1240,7 +1240,9 @@ namespace System.Security.Cryptography.X509Certificates
             // OpenSSL 1.0 sets a "signature valid, don't check again" if we OK the signature error
             // OpenSSL 1.1 does not.
             private const long OpenSSL_1_1_0_RTM = 0x10100000L;
+#pragma warning disable CA1416
             private static readonly bool s_defaultAbort = SafeEvpPKeyHandle.OpenSslVersion < OpenSSL_1_1_0_RTM;
+#pragma warning restore CA1416
 
             private ErrorCollection[]? _errors;
 
@@ -1339,6 +1341,7 @@ namespace System.Security.Cryptography.X509Certificates
         {
             // 3.0+ are M_NN_00_PP_p (Major, Minor, 0, Patch, Preview)
             // 1.x.y are 1_XX_YY_PP_p
+#pragma warning disable CA1416
             if (SafeEvpPKeyHandle.OpenSslVersion >= 0x3_00_00_00_0)
             {
                 return MapOpenSsl30Code;
@@ -1348,6 +1351,7 @@ namespace System.Security.Cryptography.X509Certificates
             {
                 return MapOpenSsl111Code;
             }
+#pragma warning restore CA1416
 
             return MapOpenSsl102Code;
         }

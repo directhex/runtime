@@ -27,7 +27,9 @@ namespace System.Security.Cryptography.X509Certificates
 
             try
             {
+#pragma warning disable CA1416
                 alg = new RSAOpenSsl(privateKey!);
+#pragma warning restore CA1416
             }
             catch (CryptographicException)
             {
@@ -37,7 +39,9 @@ namespace System.Security.Cryptography.X509Certificates
             {
                 try
                 {
+#pragma warning disable CA1416
                     alg = new ECDsaOpenSsl(privateKey!);
+#pragma warning restore CA1416
                 }
                 catch (CryptographicException)
                 {
@@ -48,7 +52,9 @@ namespace System.Security.Cryptography.X509Certificates
             {
                 try
                 {
+#pragma warning disable CA1416
                     alg = new DSAOpenSsl(privateKey!);
+#pragma warning restore CA1416
                 }
                 catch (CryptographicException)
                 {

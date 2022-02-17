@@ -38,14 +38,20 @@ namespace System.Security.Cryptography.X509Certificates
             switch (privateKeyInfo.PrivateKeyAlgorithm.Algorithm)
             {
                 case Oids.Rsa:
+#pragma warning disable CA1416
                     key = new RSAOpenSsl();
+#pragma warning restore CA1416
                     break;
                 case Oids.Dsa:
+#pragma warning disable CA1416
                     key = new DSAOpenSsl();
+#pragma warning restore CA1416
                     break;
                 case Oids.EcDiffieHellman:
                 case Oids.EcPublicKey:
+#pragma warning disable CA1416
                     key = new ECDiffieHellmanOpenSsl();
+#pragma warning restore CA1416
                     break;
                 default:
                     throw new CryptographicException(
