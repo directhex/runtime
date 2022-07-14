@@ -47,6 +47,12 @@ jobs:
       - name: _runSmokeTestsOnlyArg
         value: '/p:RunSmokeTestsOnly=$(isRunSmokeTestsOnly)'
 
+      - name: _wasmVariantArg
+        ${{ if ne(parameters.jobParameters.wasmVariant, '') }}:
+          value: '/p:MonoWasmBuildVariant=$(wasmVariant)'
+        ${{ if eq(parameters.jobParameters.wasmVariant, '') }}:
+          value: ''
+
       - name: _overrideTestScriptWindowsCmdParameter
         ${{ if eq(parameters.jobParameters.runScriptWindowsCmd, true) }}:
           value: '/p:RunScriptWindowsCmd=true'
